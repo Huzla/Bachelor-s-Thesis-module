@@ -6,6 +6,7 @@
   <title>Bachelor's Thesis WebAssembly module</title>
   <meta name="description" content="Bachelor's Thesis WebAssembly module">
   <meta name="author" content="Lari Alakukku">
+  <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
@@ -14,11 +15,18 @@
     WebAssembly median filter test
   </h1>
 
-  <div>
-    <img alt="Original image">
-    <img alt="Filterd image">
-    
+  <div id="imgs">
+    <img id="originalImg" src='testImage.jpg' alt="Original image" width="49%">
+    <canvas id="filteredImg" alt="Filterd image">
   </div>
-  <script src="index.js"></script>
+
+  <div>
+    <label for="inputFile">Upload an image</label>
+    <input id='imgButton' type="file" accept="image/jpeg,image/x-png" title="jpeg and png formats are supported" name="inputFile">
+
+    <label for="switch">Use WebAssembly</label>
+    <input id='filterSwitch' name="switch" type='checkbox' >
+  </div>
+  <script src="js/index.js"></script>
 </body>
 </html>
