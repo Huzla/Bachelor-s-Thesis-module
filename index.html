@@ -15,18 +15,20 @@
     WebAssembly median filter test
   </h1>
 
-  <div id="imgs">
-    <img id="originalImg" src='testImage.jpg' alt="Original image" width="49%">
-    <canvas id="filteredImg" alt="Filterd image">
-  </div>
-
   <div>
     <label for="inputFile">Upload an image</label>
-    <input id='imgButton' type="file" accept="image/jpeg,image/x-png" title="jpeg and png formats are supported" name="inputFile">
+    <input id='imgButton' type="file" accept="image/jpeg,image/x-png" title="jpeg and png formats are supported" >
 
     <label for="switch">Use WebAssembly</label>
     <input id='filterSwitch' name="switch" type='checkbox' >
   </div>
+
+
+  <div id="imgs">
+    <img id="originalImg" src='testImage.jpg' alt="Original image" width="49%">
+    <canvas id="filteredImg" alt="Filterd image">
+  </div>
+  
   <script src="js/index.js"></script>
 </body>
 </html>
