@@ -1,0 +1,11 @@
+{
+  "name": "thesis-module-tests",
+  "version": "1.0.0",
+  "description": "Unit tests for the module and corresponding JavaScript",
+  "main": "tests.js",
+  "scripts": {
+    "test": "node tests"
+  },
+  "author": "Lari Alakukku",
+  "license": "ISC"
+}

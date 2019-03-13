@@ -1,10 +1,10 @@
-#include "mf.h"
+#include "mf_wa.h"
 #include <algorithm>
 #include <vector>
 #include <iostream>
 
 
-void mf(int ny, int nx, int hy, int hx, const float* in, float* out) {
+void mf_wa(int ny, int nx, int hy, int hx, const float* in, float* out) {
 
 	int x = 0;
 	int y = 0;
