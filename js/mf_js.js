@@ -14,7 +14,7 @@ function mf_js(ny, nx, hy, hx, input, output) {
   median_y_start = 0,
   median_y_end = 0;
 
-  for (let i = 0; i < nx*ny; ++i)
+  for (var i = 0; i < nx*ny; ++i)
   {
     x = x % nx;
 
@@ -48,7 +48,7 @@ function mf_js(ny, nx, hy, hx, input, output) {
 
     var k = 0.0;
 
-    median_vector = [...median_vector].sort((a, b) => a - b);
+    median_vector.sort();
     if (size % 2 == 0)
     {
       var temp = 0;
