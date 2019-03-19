@@ -6,7 +6,10 @@
 // Pixel (x,y) for 0 <= x < nx and 0 <= y < ny is located at
 // in[x + y*nx] and out[x + y*nx].
 
+//const quickselect = require("../tests/node_modules/quickselect/quickselect.js");
+
 function mf_js(ny, nx, hy, hx, input, output) {
+
   var x = 0,
   y = 0,
   median_x_start = 0,
@@ -14,7 +17,7 @@ function mf_js(ny, nx, hy, hx, input, output) {
   median_y_start = 0,
   median_y_end = 0;
 
-  for (var i = 0; i < nx*ny; ++i)
+  for (let i = 0; i < nx*ny; ++i)
   {
     x = x % nx;
 
@@ -43,23 +46,27 @@ function mf_js(ny, nx, hy, hx, input, output) {
       for (var median_x = median_x_start + row; median_x <= median_x_end + row;++median_x)
       {
         median_vector[size++] = input[median_x];
+
       }
     }
 
     var k = 0.0;
 
-    median_vector.sort();
     if (size % 2 == 0)
     {
       var temp = 0;
+      quickselect(median_vector, Math.floor(size/2)-1, 0, size-1);
 
       temp += median_vector[Math.floor(size/2)-1];
+      quickselect(median_vector, Math.floor(size/2), 0, size-1);
+
       temp += median_vector[Math.floor(size/2)];
 
       k = temp/2;
     }
     else
     {
+      quickselect(median_vector, Math.floor(size/2), 0, size-1);
       k = median_vector[Math.floor(size/2)];
     }
 
@@ -68,6 +75,5 @@ function mf_js(ny, nx, hy, hx, input, output) {
     x++;
 
   }
-}
 
-module.exports = mf_js;
+}
