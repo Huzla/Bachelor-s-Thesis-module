@@ -113,23 +113,3 @@ document.getElementById('dims').onchange = (evt) => {
   dim = parseInt(evt.target.value);
   dimsLabel.innerHTML = dim + 'X' + dim + ' dimension filter' ;
 };
-
-document.getElementById('imgButton').onchange = (evt) => {
-    let target = evt.target || window.event.srcElement;
-
-    //Only one file is expected.
-    let file = target.files[0];
-
-    if (FileReader && file) {
-        let reader = new FileReader();
-        reader.onload = () => {
-            originalImg.src = reader.result;
-        }
-        reader.readAsDataURL(file);
-    }
-
-    // No FileReader support
-    else {
-      //TODO: Handle cases where FileReader is not supported.
-    }
-};

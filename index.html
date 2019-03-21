@@ -16,8 +16,8 @@
   </h1>
 
   <div>
-    <label for="inputFile">Upload an image</label>
-    <input id='imgButton' type="file" accept="image/jpeg,image/x-png" title="jpeg and png formats are supported" >
+    <label for="imgButton">Apply filter</label>
+    <button id='imgButton' name="imgButton" >Apply</button>
 
     <label id="dimlabel" for="dim">1X1 dimension filter</label>
     <input id='dims' type="range" name="dim" min="0" max="10" step='1' value='1'>
@@ -27,7 +27,7 @@
 
 
   <div id="imgs">
-    <img id="originalImg" alt="Original image" width="32%">
+    <img id="originalImg" src="test.png" alt="Original image" width="32%">
     <canvas id="jsFilteredImg" alt="JavaScript Filterd image"></canvas>
     <canvas id="wasmFilteredImg" alt="Wasm Filterd image"></canvas>
   </div>
@@ -40,7 +40,7 @@
   <script type="text/javascript">
     var Module = {
       onRuntimeInitialized: function() {
-        document.getElementById('originalImg').onload = filterImg;
+        document.getElementById('imgButton').onclick = filterImg;
       }
     };
   </script>
