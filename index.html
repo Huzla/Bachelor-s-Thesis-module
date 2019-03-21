@@ -19,19 +19,32 @@
     <label for="inputFile">Upload an image</label>
     <input id='imgButton' type="file" accept="image/jpeg,image/x-png" title="jpeg and png formats are supported" >
 
-    <label for="switch">Use WebAssembly</label>
-    <input id='filterSwitch' name="switch" type='checkbox' >
+    <label id="dimlabel" for="dim">1X1 dimension filter</label>
+    <input id='dims' type="range" name="dim" min="0" max="10" step='1' value='1'>
+
+    <p>The images starting from the left: the original, JavaScript filtered and Wasm filtered.</p>
   </div>
 
 
   <div id="imgs">
-    <img id="originalImg" src='testImage.jpg' alt="Original image" width="49%">
-    <canvas id="filteredImg" alt="Filterd image">
+    <img id="originalImg" alt="Original image" width="32%">
+    <canvas id="jsFilteredImg" alt="JavaScript Filterd image"></canvas>
+    <canvas id="wasmFilteredImg" alt="Wasm Filterd image"></canvas>
   </div>
 
   <script src="tests/node_modules/quickselect/quickselect.js"></script>
   <script src="js/tinycolor.js"></script>
-  <script src="js/mf_js.js"></script>
+  <script async type="text/javascript" src="wa/mf_wa.js"></script>
   <script src="js/index.js"></script>
+
+  <script type="text/javascript">
+    var Module = {
+      onRuntimeInitialized: function() {
+        document.getElementById('originalImg').onload = filterImg;
+      }
+    };
+  </script>
+
+  <script src="js/mf_js.js"></script>
 </body>
 </html>

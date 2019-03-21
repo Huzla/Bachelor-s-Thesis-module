@@ -1,9 +1,23 @@
-#include "mf_wa.h"
+//#include "mf_wa.h"
 #include <algorithm>
+#include <emscripten/emscripten.h>
+#include <vector>
+//#include <chrono>
 #include <iostream>
 
+int main() {
+  //Include main for emscripten.
+}
 
-void mf_wa(int ny, int nx, int hy, int hx, std::vector<float>& in, std::vector<float>& out) {
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+void EMSCRIPTEN_KEEPALIVE mf_wa(int ny, int nx, int hy, int hx, float* in, float* out) {
+
+	//std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
+
+	int iterations = 0;
 
 	int x = 0;
 	int y = 0;
@@ -45,19 +59,22 @@ void mf_wa(int ny, int nx, int hy, int hx, std::vector<float>& in, std::vector<f
 		}
 
 		double k = 0;
-
-		std::sort(median_vector.begin(), median_vector.begin() + size);
+		auto b = median_vector.begin();
+		auto e = median_vector.begin() + size;
 
 		if (size % 2 == 0)
 		{
 			double temp = 0;
+			std::nth_element(median_vector.begin(), median_vector.begin() + size/2-1, median_vector.begin() + size);
 			temp += median_vector[size/2-1];
+			std::nth_element(median_vector.begin(), median_vector.begin() + size/2, median_vector.begin() + size);
 			temp += median_vector[size/2];
 
 			k = temp/2;
 		}
 		else
 		{
+			std::nth_element(median_vector.begin(), median_vector.begin() + size/2, median_vector.begin() + size);
 			k = median_vector[size/2];
 		}
 
@@ -68,4 +85,11 @@ void mf_wa(int ny, int nx, int hy, int hx, std::vector<float>& in, std::vector<f
 
 	}
 
+//	std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
+//	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>( t2 - t1 ).count();
+//	std::cout << duration << "ms" << std::endl;
 }
+
+#ifdef __cplusplus
+}
+#endif

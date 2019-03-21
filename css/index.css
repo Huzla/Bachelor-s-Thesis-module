@@ -1,3 +1,13 @@
 h1 {
   text-align: center;
 }
+
+img {
+  border: 1px solid black;
+  display: inline-block;
+}
+
+canvas {
+  display: inline-block;
+  border: 1px solid black;
+}

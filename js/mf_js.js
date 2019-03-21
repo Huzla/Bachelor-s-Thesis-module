@@ -9,7 +9,6 @@
 //const quickselect = require("../tests/node_modules/quickselect/quickselect.js");
 
 function mf_js(ny, nx, hy, hx, input, output) {
-
   var x = 0,
   y = 0,
   median_x_start = 0,
@@ -46,7 +45,6 @@ function mf_js(ny, nx, hy, hx, input, output) {
       for (var median_x = median_x_start + row; median_x <= median_x_end + row;++median_x)
       {
         median_vector[size++] = input[median_x];
-
       }
     }
 
@@ -73,7 +71,6 @@ function mf_js(ny, nx, hy, hx, input, output) {
     output[i] = k;
 
     x++;
-
   }
 
 }

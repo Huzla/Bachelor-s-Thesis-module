@@ -10,6 +10,6 @@
 // Pixel (x,y) for 0 <= x < nx and 0 <= y < ny is located at
 // in[x + y*nx] and out[x + y*nx].
 
-void mf_wa(int ny, int nx, int hy, int hx, std::vector<float>& in, std::vector<float>& out);
+void EMSCRIPTEN_KEEPALIVE mf_wa(int ny, int nx, int hy, int hx, float* in, float* out);
 
 #endif
