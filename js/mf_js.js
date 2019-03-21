@@ -16,7 +16,7 @@ function mf_js(ny, nx, hy, hx, input, output) {
   median_y_start = 0,
   median_y_end = 0;
 
-  for (let i = 0; i < nx*ny; ++i)
+  for (var i = 0; i < nx*ny; ++i)
   {
     x = x % nx;
 
