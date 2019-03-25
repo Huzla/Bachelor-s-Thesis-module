@@ -46,6 +46,18 @@ function filterImg() {
   mf_js(jsImgData.height, jsImgData.width, dim, dim, sDataIn, sDataOutjs);
   mf_js(jsImgData.height, jsImgData.width, dim, dim, vDataIn, vDataOutjs);
 
+  for (var i = 0; i < length; i++) {
+    let color = tinycolor({ h: hDataOutjs[i], s: sDataOutjs[i], v: vDataOutjs[i] });
+    color = color.toRgb();
+
+    jsData[i*4] = color.r;
+    jsData[i*4 + 1] = color.g;
+    jsData[i*4 + 2] = color.b;
+
+  }
+
+  jsCtx.putImageData(jsImgData, 0, 0);
+
   try {
     //Allocate module memory.
     var hIn_buf = Module._malloc(length * hDataIn.BYTES_PER_ELEMENT);
@@ -81,6 +93,7 @@ function filterImg() {
       waData[i*4 + 2] = color.b;
     }
 
+    waCtx.putImageData(waImgData, 0, 0);
 
   } catch (e) {
     console.log(e);
@@ -95,18 +108,7 @@ function filterImg() {
     Module._free(vOut_buf);
   }
 
-  for (var i = 0; i < length; i++) {
-    let color = tinycolor({ h: hDataOutjs[i], s: sDataOutjs[i], v: vDataOutjs[i] });
-    color = color.toRgb();
 
-    jsData[i*4] = color.r;
-    jsData[i*4 + 1] = color.g;
-    jsData[i*4 + 2] = color.b;
-
-  }
-
-  waCtx.putImageData(waImgData, 0, 0);
-  jsCtx.putImageData(jsImgData, 0, 0);
 }
 
 document.getElementById('dims').onchange = (evt) => {

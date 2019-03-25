@@ -1,19 +1,15 @@
-//#include "mf_wa.h"
+#include "mf_wa.h"
 #include <algorithm>
 #include <emscripten/emscripten.h>
-#include <vector>
+//#include <vector>
 //#include <chrono>
-#include <iostream>
-
-int main() {
-  //Include main for emscripten.
-}
+//#include <iostream>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void EMSCRIPTEN_KEEPALIVE mf_wa(int ny, int nx, int hy, int hx, float* in, float* out) {
+void  mf_wa(int ny, int nx, int hy, int hx, float* in, float* out) {
 
 	//std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
 
